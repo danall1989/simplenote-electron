@@ -51,6 +51,14 @@ const setSelectedNote = (state = defaultNote, action) => {
       return null;
     case SET_SELECTED_NOTE:
       return action.note;
+    case 'FILTER_NOTES':
+      if (
+        action.notes.length &&
+        (!state || !action.notes.some(note => note.id === state.id))
+      ) {
+        return action.notes[0] || null;
+      }
+      return state;
     default:
       return state;
   }

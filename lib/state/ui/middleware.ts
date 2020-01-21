@@ -5,17 +5,8 @@ import filterNotes from '../../utils/filter-notes';
 let searchTimeout: NodeJS.Timeout;
 
 export default store => {
-  const updateNotes = () => {
+  const updateNotes = () =>
     store.dispatch(filterAction(filterNotes(store.getState().appState)));
-    const state = store.getState();
-    if (
-      state.ui.filteredNotes.length &&
-      (!state.ui.note ||
-        !state.ui.filteredNotes.some(note => note.id === state.ui.note.id))
-    ) {
-      store.dispatch(setSelectedNote(state.ui.filteredNotes[0]));
-    }
-  };
 
   return next => (action: AnyAction) => {
     const result = next(action);
