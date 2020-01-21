@@ -26,16 +26,12 @@ const visiblePanes = (state = defaultVisiblePanes, { type, show }) => {
   return state;
 };
 
-const defaultNote: T.NoteEntity | null = null;
-const setSelectedNote = (state = defaultNote, action) => {
+const setSelectedNote = (state = null, action) => {
   switch (action.type) {
     case 'App.notesLoaded': {
-      if (!state) {
-        return action.notes[0] || null;
-      }
-
-      const note = action.notes.find(({ id }) => id === state.id);
-      return note || state;
+      return state
+        ? action.notes.find(({ id }) => id === state.id) || state
+        : action.notes[0] || null;
     }
     case 'App.noteUpdatedRemotely':
     case 'App.selectNote': {
