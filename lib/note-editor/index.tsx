@@ -170,7 +170,7 @@ const mapStateToProps = ({ appState: state, settings, ui: { note } }) => ({
   isEditorActive: !state.showNavigation,
   note,
   revision: state.revision,
-  tags: note.data.tags,
+  tags: get(note, 'data.tags', []),
 });
 
 const { closeNote, setEditorMode } = appState.actionCreators;

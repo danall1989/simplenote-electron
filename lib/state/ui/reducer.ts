@@ -27,14 +27,33 @@ const visiblePanes = (state = defaultVisiblePanes, { type, show }) => {
 };
 
 const defaultNote: T.NoteEntity | null = null;
-const setSelectedNote = (
-  state = defaultNote,
-  { type, note }: { type: string; note: T.NoteEntity[] }
-) => {
-  if (SET_SELECTED_NOTE === type) {
-    return note;
+const setSelectedNote = (state = defaultNote, action) => {
+  switch (action.type) {
+    case 'App.notesLoaded': {
+      if (!state) {
+        return action.notes[0] || null;
+      }
+
+      const note = action.notes.find(({ id }) => id === state.id);
+      return note || state;
+    }
+    case 'App.noteUpdatedRemotely':
+    case 'App.selectNote': {
+      return {
+        ...action.note,
+        hasRemoteUpdate: action.hasRemoteUpdate,
+      };
+    }
+    case 'App.closeNote':
+    case 'App.showAllNotes':
+    case 'App.selectTrash':
+    case 'App.selectTag':
+      return null;
+    case SET_SELECTED_NOTE:
+      return action.note;
+    default:
+      return state;
   }
-  return state;
 };
 
 export default combineReducers({

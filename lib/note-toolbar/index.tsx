@@ -172,8 +172,8 @@ export class NoteToolbar extends Component {
   };
 }
 
-const mapStateToProps = ({ ui: { note } }) => {
-  note;
-};
+const mapStateToProps = ({ ui: { note } }) => ({
+  note,
+});
 
 export default connect(mapStateToProps)(NoteToolbar);

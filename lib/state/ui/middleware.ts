@@ -48,46 +48,6 @@ export default store => {
         }
         break;
     }
-    switch (action.type) {
-      case 'App.closeNote':
-      case 'App.showAllNotes':
-      case 'App.selectTrash':
-      case 'App.selectTag':
-        store.dispatch(setSelectedNote(null));
-        break;
-      case 'App.notesLoaded':
-        if (store.getState().ui.note) {
-          store.dispatch(
-            setSelectedNote(
-              action.notes.length
-                ? action.notes.find(
-                    note => note.id === store.getState().ui.note.id
-                  )
-                : store.getState().ui.note
-            )
-          );
-        } else {
-          store.dispatch(
-            setSelectedNote(action.notes.length ? action.notes[0] : null)
-          );
-        }
-        break;
-      case 'App.selectNote':
-        store.dispatch(
-          setSelectedNote({
-            ...action.note,
-            hasRemoteUpdate: action.hasRemoteUpdate,
-          })
-        );
-        break;
-      case 'App.noteUpdatedRemotely':
-        setSelectedNote({
-          ...action.note,
-          hasRemoteUpdate: action.hasRemoteUpdate,
-        });
-        break;
-      case 'FILTER_NOTES':
-    }
     return result;
   };
 };
