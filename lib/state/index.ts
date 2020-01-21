@@ -34,7 +34,6 @@ export type AppState = {
   previousIndex: number;
   revision: T.NoteEntity | null;
   searchFocus: boolean;
-  selectedNoteId: T.EntityId | null;
   shouldPrint: boolean;
   showNavigation: boolean;
   showNoteInfo: boolean;
@@ -68,7 +67,8 @@ export const store = createStore(
         [path]: omit(state[path], 'focusModeEnabled'),
       }),
     }),
-    applyMiddleware(thunk, uiMiddleware)
+    applyMiddleware(thunk, uiMiddleware),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 );
 

@@ -1,3 +1,4 @@
 export const AUTH_SET = 'AUTH_SET';
 export const FILTER_NOTES = 'FILTER_NOTES';
+export const SET_SELECTED_NOTE = 'SET_SELECTED_NOTE';
 export const TAG_DRAWER_TOGGLE = 'TAG_DRAWER_TOGGLE';

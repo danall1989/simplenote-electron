@@ -1,6 +1,10 @@
 import { difference, union } from 'lodash';
 import { combineReducers } from 'redux';
-import { FILTER_NOTES, TAG_DRAWER_TOGGLE } from '../action-types';
+import {
+  FILTER_NOTES,
+  SET_SELECTED_NOTE,
+  TAG_DRAWER_TOGGLE,
+} from '../action-types';
 
 import * as T from '../../types';
 
@@ -22,4 +26,19 @@ const visiblePanes = (state = defaultVisiblePanes, { type, show }) => {
   return state;
 };
 
-export default combineReducers({ filteredNotes, visiblePanes });
+const defaultNote: T.NoteEntity | null = null;
+const setSelectedNote = (
+  state = defaultNote,
+  { type, note }: { type: string; note: T.NoteEntity[] }
+) => {
+  if (SET_SELECTED_NOTE === type) {
+    return note;
+  }
+  return state;
+};
+
+export default combineReducers({
+  filteredNotes,
+  note: setSelectedNote,
+  visiblePanes,
+});
