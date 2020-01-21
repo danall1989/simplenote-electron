@@ -173,9 +173,7 @@ export class NoteToolbar extends Component {
 }
 
 const mapStateToProps = ({ ui: { note } }) => {
-  return {
-    note,
-  };
+  note;
 };
 
 export default connect(mapStateToProps)(NoteToolbar);

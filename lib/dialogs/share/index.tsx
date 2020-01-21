@@ -12,7 +12,6 @@ import Dialog from '../../dialog';
 import TabPanels from '../../components/tab-panels';
 import PanelTitle from '../../components/panel-title';
 import ToggleControl from '../../controls/toggle';
-import { useRadioGroup } from '@material-ui/core';
 
 const shareTabs = ['collaborate', 'publish'];
 
@@ -206,9 +205,9 @@ export class ShareDialog extends Component {
   }
 }
 
-const mapStateToProps = ({ appState: state, settings, ui }) => ({
+const mapStateToProps = ({ settings, ui: { note } }) => ({
   settings,
-  note: ui.note || {},
+  note: note || {},
 });
 
 export default connect(mapStateToProps, { updateNoteTags })(ShareDialog);

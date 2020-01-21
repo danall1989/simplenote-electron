@@ -162,15 +162,15 @@ export class NoteEditor extends Component {
   }
 }
 
-const mapStateToProps = ({ appState: state, settings, ui }) => ({
+const mapStateToProps = ({ appState: state, settings, ui: { note } }) => ({
   allTags: state.tags,
   filter: state.filter,
   fontSize: settings.fontSize,
   editorMode: state.editorMode,
   isEditorActive: !state.showNavigation,
-  note: ui.note,
+  note,
   revision: state.revision,
-  tags: get(ui.note, 'data.tags', []),
+  tags: get(note, 'data.tags', []),
 });
 
 const { closeNote, setEditorMode } = appState.actionCreators;
