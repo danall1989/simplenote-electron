@@ -207,7 +207,7 @@ export class ShareDialog extends Component {
 
 const mapStateToProps = ({ settings, ui: { note } }) => ({
   settings,
-  note: note || {},
+  note,
 });
 
 export default connect(mapStateToProps, { updateNoteTags })(ShareDialog);

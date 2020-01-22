@@ -496,7 +496,7 @@ const mapStateToProps = ({
 }) => {
   const tagResultsFound = getMatchingTags(state.tags, state.filter).length;
   const selectedNote = note;
-  const selectedNoteId = get(selectedNote, 'id', null);
+  const selectedNoteId = selectedNote?.id;
   const selectedNoteIndex = filteredNotes.findIndex(
     ({ id }) => id === selectedNoteId
   );
@@ -545,7 +545,7 @@ const mapStateToProps = ({
     prevNote,
     selectedNotePreview,
     selectedNoteContent: get(selectedNote, 'data.content'),
-    selectedNoteId: get(selectedNote, 'id'),
+    selectedNoteId,
     showTrash: state.showTrash,
     tagResultsFound,
   };

@@ -1,5 +1,5 @@
 import { AnyAction } from 'redux';
-import { filterNotes as filterAction, setSelectedNote } from './actions';
+import { filterNotes as filterAction } from './actions';
 import filterNotes from '../../utils/filter-notes';
 
 let searchTimeout: NodeJS.Timeout;
