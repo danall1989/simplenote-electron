@@ -26,7 +26,7 @@ const visiblePanes = (state = defaultVisiblePanes, { type, show }) => {
   return state;
 };
 
-const setSelectedNote = (state = null, action) => {
+const note = (state = null, action) => {
   switch (action.type) {
     case 'App.notesLoaded': {
       return state
@@ -59,6 +59,6 @@ const setSelectedNote = (state = null, action) => {
 
 export default combineReducers({
   filteredNotes,
-  note: setSelectedNote,
+  note,
   visiblePanes,
 });
