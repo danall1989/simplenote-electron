@@ -47,14 +47,11 @@ const setSelectedNote = (state = null, action) => {
       return null;
     case SET_SELECTED_NOTE:
       return action.note;
-    case 'FILTER_NOTES':
-      if (
-        action.notes.length &&
-        (!state || !action.notes.some(note => note.id === state.id))
-      ) {
-        return action.notes[0] || null;
-      }
-      return state;
+    case FILTER_NOTES:
+      // keep note if still in new filtered list otherwise try to choose first note in list
+      return state && action.notes.some(({ id }) => id === state.id)
+        ? state
+        : action.notes[0] || null;
     default:
       return state;
   }
