@@ -39,6 +39,7 @@ export default store => {
         }
         break;
     }
+
     return result;
   };
 };

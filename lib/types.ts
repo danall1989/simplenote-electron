@@ -18,6 +18,7 @@ export type Note = {
   content: string;
   creationDate: SecondsEpoch;
   deleted: boolean;
+  hasRemoteUpdate?: boolean;
   modificationDate: SecondsEpoch;
   publishURL?: string;
   shareURL?: string;
